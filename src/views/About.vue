@@ -1,64 +1,69 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="10" sm="8" md="7" lg="6">
-      <v-card elevation="4"
-              outlined
-              shaped
-      >
-        <v-container>
-          <v-row class="pb-2 pb-sm-4">
-            <v-col
-              :cols="breakpoint ? 6 : 12"
-              lg="5"
-              class="text-center text-sm-left"
-            >
-              <v-avatar
-                color="teal"
-                :size="size"
+  <div>
+    <v-card
+      elevation="0"
+    >
+      <v-card-title class="justify-end text--disabled pa-2 my-font"
+                    v-text="'<!--About-->'"
+      ></v-card-title>
+    </v-card>
+    <v-row justify="center">
+      <v-col cols="10" sm="8" md="7" lg="6">
+        <v-card elevation="4"
+                outlined
+                shaped
+        >
+          <v-container>
+            <v-row class="pb-2 pb-sm-4">
+              <v-col
+                :cols="breakpoint ? 6 : 12"
+                lg="5"
+                class="text-center text-sm-left"
               >
-                <img src="../assets/author_photo.jpg" alt="Ivan">
-              </v-avatar>
-            </v-col>
-            <p class="text--disabled text-button text-label hidden-sm-and-down" v-text="'<!--About-->'"></p>
-            <v-col
-              :cols="breakpoint ? 6 : 12"
-              :class="breakpoint ? 'pt-10' : 'pt-2'"
-            >
-              <div class="pb-sm-5 pb-2">
-                <h3 class="pb-2 font-weight-bold text-uppercase text-h6 text-md-h5">Ivan Shyian</h3>
-                <span class="pb-2">23 years old</span><br>
-                <span>Frontend developer</span><br>
-                <span>Kyiv, Ukraine</span>
-              </div>
-            </v-col>
-          </v-row>
-          <v-divider></v-divider>
-          <v-row class="mt-0">
-            <v-col>
-              <p>Hello! My name is Ivan, I am 23 years old and I was born in Kiev.<br>
-                In February of this year, I graduated from the university and received a Bachelor's degree in Software
-                Engineering.<br>
-                Throughout the year I have been intensively studying front-end development. The entire learning process
-                proceeded independently through reading the documentation and analyzing examples of experienced
-                developers. I got most of my knowledge from courses that took my knowledge to the next level.</p>
-            </v-col>
-          </v-row>
-          <v-divider></v-divider>
-          <v-row class="py-2">
-            <v-col>
-              <span>Stack:</span>
-              <ul class="d-flex pt-2">
-                <li v-for="(item, i) in stack"
-                    :key="i"
-                    class="text-body-2"
-                >{{ item.title }}</li>
-              </ul>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-col>
-  </v-row>
+                <v-avatar
+                  color="teal"
+                  :size="size"
+                >
+                  <img src="../assets/author_photo.jpg" alt="Ivan">
+                </v-avatar>
+              </v-col>
+              <v-col
+                :cols="breakpoint ? 6 : 12"
+                :class="breakpoint ? 'pt-10' : 'pt-2'"
+              >
+                <div class="pb-sm-5 pb-2">
+                  <h3 class="pb-2 font-weight-bold text-uppercase text-h6 text-md-h5"
+                  >{{ personal.name }}</h3>
+                  <span class="pb-2">{{ personal.age }}</span><br>
+                  <span>{{ personal.position }}</span><br>
+                  <span>{{ personal.place }}</span>
+                </div>
+              </v-col>
+            </v-row>
+            <v-divider></v-divider>
+            <v-row class="mt-0">
+              <v-col>
+                <p>{{ personal.content }}</p>
+              </v-col>
+            </v-row>
+            <v-divider></v-divider>
+            <v-row class="py-2">
+              <v-col>
+                <span>Stack:</span>
+                <ul class="d-flex pt-2">
+                  <li v-for="(item, i) in stack"
+                      :key="i"
+                      class="text-body-2"
+                  >{{ item.title }}
+                  </li>
+                </ul>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -67,6 +72,16 @@ export default {
   name: 'About',
   data() {
     return {
+      personal: {
+        name: 'Ivan Shyian',
+        age: '23 years-old',
+        place: 'Kyiv, Ukraine',
+        position: 'Frontend developer',
+        content: `Hello! My name is Ivan, I am 23 years old and I was born in Kiev.
+        In February of this year, I graduated from the university and received a Bachelor's degree in Software Engineering.
+        Throughout the year I have been intensively studying front-end development. The entire learning process proceeded independently through reading the documentation and analyzing examples of experienced developers.
+        I got most of my knowledge from courses that took my knowledge to the next level. And also i keep working!`
+      },
       stack: [
         { title: 'HTML' },
         { title: 'CSS, SASS & LESS' },
@@ -99,13 +114,17 @@ export default {
 }
 </script>
 <style lang="scss">
-.text-label {
-  position: absolute;
-  top: 8px;
-  right: 8px;
+.my-font {
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  line-height: 2.25rem;
+  letter-spacing: 0.0892857143em !important;
+  text-transform: uppercase !important;
+  font-family: "JetBrains Mono Light", sans-serif !important;
 }
 ul {
   flex-wrap: wrap;
+
   li {
     flex: 0 0 50%;
     @media (max-width: 600px) {

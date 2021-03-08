@@ -7,7 +7,9 @@
         <v-card
           elevation="0"
         >
-          <v-card-title class="justify-end text--disabled text-button pa-2" v-text="'<!--Projects-->'"></v-card-title>
+          <v-card-title class="justify-end text--disabled text-button pa-2 my-font"
+                        v-text="'<!--Projects-->'"
+          ></v-card-title>
         </v-card>
       </v-col>
     </v-row>
@@ -16,7 +18,11 @@
              :key="proj.id"
              cols="12" sm="6" md="4"
       >
-        <v-card min-height="400" class="d-flex flex-column">
+        <v-card
+          min-height="400"
+          elevation="2"
+          outlined
+          class="d-flex flex-column pt-2">
           <v-img
             max-height="150"
             contain
@@ -36,7 +42,10 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-card>
+        <v-card
+          elevation="1"
+          outlined
+        >
           <v-card-title class="justify-center">{{ additional.label }}</v-card-title>
           <v-divider></v-divider>
           <v-card-text
@@ -96,5 +105,8 @@ export default {
 </script>
 
 <style scoped>
+.my-font {
+  font-family: "JetBrains Mono Light", sans-serif !important;
+}
 
 </style>

@@ -21,7 +21,7 @@ const routes = [
     component: () => import('../views/Study')
   },
   {
-    path: 'contacts',
+    path: '/contacts',
     name: 'Contacts',
     component: () => import('../views/Contacts')
   }

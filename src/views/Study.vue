@@ -2,13 +2,15 @@
   <v-sheet
     color="white"
   >
+    <v-card
+      elevation="0"
+    >
+      <v-card-title class="justify-end text--disabled text-button pa-2 my-font"
+                    v-text="'<!--Study-->'"
+      ></v-card-title>
+    </v-card>
     <v-row justify="center">
       <v-col cols="12" sm="10" md="9" lg="8">
-        <v-card
-          elevation="0"
-        >
-          <v-card-title class="justify-end text--disabled text-button pa-2" v-text="'<!--Study-->'"></v-card-title>
-        </v-card>
         <v-expansion-panels
           v-model="panel"
           :disabled="disabled"
@@ -90,5 +92,8 @@ export default {
 </script>
 
 <style scoped>
+.my-font {
+  font-family: "JetBrains Mono Light", sans-serif !important;
+}
 
 </style>

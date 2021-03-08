@@ -9,15 +9,18 @@
         tile
         color="#29B6F6"
         class="white--text text-center">
-        <v-card-text class="py-0">
+        <v-card-text class="pa-0">
           <v-btn
-            v-for="icon in icons"
-            :key="icon"
+            v-for="item in social"
+            :key="item.id"
             class="mx-4 my-0 white--text"
             icon
+            link
+            target="_blank"
+            :href="item.link"
           >
             <v-icon size="18px">
-              {{ icon }}
+              {{ item.icon }}
             </v-icon>
           </v-btn>
         </v-card-text>
@@ -32,14 +35,11 @@
 
 <script>
 export default {
-  data: () => ({
-    icons: [
-      'fab fa-facebook',
-      'fab fa-linkedin',
-      'fab fa-telegram',
-      'fab fa-instagram'
-    ]
-  })
+  computed: {
+    social() {
+      return this.$store.getters.socialFooter
+    }
+  }
 }
 </script>
 
