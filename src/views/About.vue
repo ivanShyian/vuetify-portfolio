@@ -19,7 +19,7 @@
                 <img src="../assets/author_photo.jpg" alt="Ivan">
               </v-avatar>
             </v-col>
-            <p class="text--disabled text-caption text-label hidden-sm-and-down" v-text="'<!--About-->'"></p>
+            <p class="text--disabled text-button text-label hidden-sm-and-down" v-text="'<!--About-->'"></p>
             <v-col
               :cols="breakpoint ? 6 : 12"
               :class="breakpoint ? 'pt-10' : 'pt-2'"
@@ -47,7 +47,7 @@
           <v-row class="py-2">
             <v-col>
               <span>Stack:</span>
-              <ul class="d-flex">
+              <ul class="d-flex pt-2">
                 <li v-for="(item, i) in stack"
                     :key="i"
                     class="text-body-2"
@@ -55,13 +55,6 @@
               </ul>
             </v-col>
           </v-row>
-          <v-card-actions class="justify-end">
-            <v-btn
-              dark
-              color="rgb(41, 182, 246)"
-            >Next
-            </v-btn>
-          </v-card-actions>
         </v-container>
       </v-card>
     </v-col>
