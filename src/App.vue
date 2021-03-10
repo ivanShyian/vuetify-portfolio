@@ -1,11 +1,7 @@
 <template>
   <v-app>
     <TheNavbar/>
-    <v-main>
-      <v-container>
-        <router-view></router-view>
-      </v-container>
-    </v-main>
+    <TheMain></TheMain>
     <TheFooter/>
   </v-app>
 </template>
@@ -13,12 +9,11 @@
 <script>
 import TheNavbar from '@/components/TheNavbar'
 import TheFooter from '@/components/TheFooter'
+import TheMain from '@/components/TheMain'
 export default {
   name: 'App',
-  data: () => ({
-    //
-  }),
   components: {
+    TheMain,
     TheFooter,
     TheNavbar
   }

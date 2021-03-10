@@ -7,7 +7,7 @@
         <v-card
           elevation="0"
         >
-          <v-card-title class="justify-end text--disabled text-button pa-2 my-font"
+          <v-card-title class="justify-end text--disabled text-button px-2 py-0 my-font"
                         v-text="'<!--Projects-->'"
           ></v-card-title>
         </v-card>
@@ -19,6 +19,7 @@
              cols="12" sm="6" md="4"
       >
         <v-card
+          v-if="projects.length"
           min-height="400"
           elevation="2"
           outlined
@@ -26,14 +27,15 @@
           <v-img
             max-height="150"
             contain
-            :src="require(`@/assets/projects/${proj.img}`)"
+            :src="require(`@/assets/projects/${proj.img.first}`)"
           ></v-img>
           <v-divider class="mt-3"></v-divider>
           <v-card-title class="text-subtitle-1 text-sm-h6 font-weight-regular">{{ proj.label }}</v-card-title>
-          <v-card-text>{{ proj.text }}</v-card-text>
+          <v-card-text>{{ proj.subText }}</v-card-text>
           <v-card-actions class="justify-end mt-auto">
             <v-btn color="#29B6F6"
                    dark
+                   @click="$router.push(`/project/${proj.id}`)"
             >Open
             </v-btn>
           </v-card-actions>
@@ -69,29 +71,6 @@
 export default {
   data() {
     return {
-      projects: [
-        {
-          id: 0,
-          name: 'Fitbody',
-          label: 'FitBody web-application',
-          img: 'fitbody/fitbody.png',
-          text: 'Fitbody application that help people to gain, lose or keep weight and easily enabled to follow your diet'
-        },
-        {
-          id: 1,
-          name: 'Store',
-          img: 'vuestore/VueStore.png',
-          label: 'Vue-Store',
-          text: 'Store where you can commit that has most of functionality like any other online-store'
-        },
-        {
-          id: 2,
-          name: 'Todo',
-          img: 'todo/todo.png',
-          label: 'Simplest Todo',
-          text: 'TodoList - helps to not forget and organize your day'
-        }
-      ],
       additional: {
         label: 'Additional info',
         text: 'Of course, these are not all of my projects. There were a couple of sites that' +
@@ -99,6 +78,11 @@ export default {
           ' Anyway you can check my github for all repositories that i have: ',
         link: 'https://github.com/ivanShyian'
       }
+    }
+  },
+  computed: {
+    projects() {
+      return this.$store.getters.projects
     }
   }
 }

@@ -5,7 +5,7 @@
         <v-card
           elevation="0"
         >
-          <v-card-title class="justify-end text--disabled text-button pa-2 my-font"
+          <v-card-title class="justify-end text--disabled text-button px-2 py-0 my-font"
                         v-text="'<!--Contacts-->'"
           ></v-card-title>
         </v-card>

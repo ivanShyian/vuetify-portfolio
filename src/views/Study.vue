@@ -5,7 +5,7 @@
     <v-card
       elevation="0"
     >
-      <v-card-title class="justify-end text--disabled text-button pa-2 my-font"
+      <v-card-title class="justify-end text--disabled text-button px-2 py-0 my-font"
                     v-text="'<!--Study-->'"
       ></v-card-title>
     </v-card>
@@ -59,7 +59,7 @@ export default {
         {
           id: 0,
           name: 'The Complete JavaScript + React Course',
-          content: 'Course where i learn most useful information about Javascript and how it works',
+          content: 'Course where i learn most useful information about Javascript and also how Javascript works',
           theoryTime: '41,5 hours',
           author: 'Ivan Petrychenko'
         },
