@@ -1,34 +1,63 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import About from '../views/About.vue'
+import i18n from '@/plugins/i18n'
 
 Vue.use(VueRouter)
 
+function load(component) {
+  return () => import(`../views/${component}.vue`)
+}
+
 const routes = [
   {
-    path: '/',
-    name: 'About',
-    component: About
+    path: '/:locale',
+    component: {
+      template: '<router-view></router-view>'
+    },
+    beforeEnter: (to, from, next) => {
+      const locale = to.params.locale
+      const supportedLocales = process.env.VUE_APP_I18N_SUPPORTED_LOCALE.split(',')
+
+      if (!supportedLocales.includes(locale)) {
+        return next('en')
+      }
+      if (i18n.locale !== locale) {
+        i18n.locale = locale
+      }
+      return next()
+    },
+    children: [{
+      path: '',
+      name: 'About',
+      component: load('About')
+    },
+    {
+      path: '/:locale/projects',
+      name: 'Projects',
+      component: load('Projects')
+    },
+    {
+      path: '/:locale/study',
+      name: 'Study',
+      component: load('Study')
+    },
+    {
+      path: '/:locale/contacts',
+      name: 'Contacts',
+      component: load('Contacts')
+
+    },
+    {
+      path: '/:locale/project/:id?',
+      name: 'Project',
+      component: load('Project')
+    }]
   },
   {
-    path: '/projects',
-    name: 'Projects',
-    component: () => import('../views/Projects')
-  },
-  {
-    path: '/study',
-    name: 'Study',
-    component: () => import('../views/Study')
-  },
-  {
-    path: '/contacts',
-    name: 'Contacts',
-    component: () => import('../views/Contacts')
-  },
-  {
-    path: '/project/:id?',
-    name: 'Project',
-    component: () => import('../views/Project')
+    path: '*',
+    redirect() {
+      return process.env.VUE_APP_I18N_LOCALE
+    }
   }
 ]
 

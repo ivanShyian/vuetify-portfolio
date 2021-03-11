@@ -10,13 +10,18 @@
       <v-app-bar-nav-icon class="hidden-md-and-up"
                           @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn v-for="(link, i) in items"
-               text
-               :to="link.src"
-               :key="i">
-          <v-icon small left
-          >{{ link.icon }}</v-icon>
-          {{ link.title }}</v-btn>
+        <TheLocalSwitcher></TheLocalSwitcher>
+        <router-link v-for="(link, i) in items"
+                     :to="{ name: link.title, params: { locale: $i18n.locale } }"
+                     v-slot="{ navigate }"
+                     :key="i"
+                     custom
+        >
+          <v-btn text @click="navigate">
+            <v-icon small left>{{ link.icon }}</v-icon>
+            {{ navigationName(link.title) }}
+          </v-btn>
+        </router-link>
       </v-toolbar-items>
     </v-app-bar>
     <v-navigation-drawer
@@ -37,12 +42,13 @@
           v-for="item in items"
           :key="item.title"
           :to="item.src"
-          link>
+          link
+        >
           <v-list-item-icon>
             <v-icon small>{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>{{ navigationName(item.title) }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -51,7 +57,9 @@
 </template>
 
 <script>
+import TheLocalSwitcher from '@/components/ui/TheLocalSwitcher'
 export default {
+  components: { TheLocalSwitcher },
   data() {
     return {
       drawer: false,
@@ -77,6 +85,12 @@ export default {
           icon: 'fa-id-card'
         }
       ]
+    }
+  },
+  methods: {
+    navigationName(name) {
+      const value = `navigation.${name.toLowerCase()}`
+      return this.$t(value)
     }
   }
 }

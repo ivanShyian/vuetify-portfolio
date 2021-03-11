@@ -5,11 +5,11 @@
       <v-card
         elevation="0"
       >
-        <v-card-title class="justify-end text--disabled px-2 py-0 my-font"
-                      v-text="'<!--About-->'"
-        ></v-card-title>
+        <v-card-title class="justify-end text--disabled px-2 py-0 my-font">
+          {{ $t('about.page') }}
+        </v-card-title>
       </v-card>
-      <v-row justify="center">
+      <v-row justify="center" v-if="false">
         <v-col cols="10" sm="8" md="7" lg="6">
           <v-card elevation="4"
                   outlined
@@ -76,11 +76,10 @@ import AppLoader from '@/components/ui/AppLoader'
 export default {
   name: 'About',
   mounted() {
-    this.$store.dispatch('/')
   },
   data() {
     return {
-      loading: true
+      loading: false
     }
   },
   computed: {

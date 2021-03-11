@@ -5,7 +5,7 @@
       {{ item.name }}
     </v-card-title>
     <v-divider></v-divider>
-    <v-card-actions class="text-body-2 pl-6">
+    <v-card-actions class="text-body-2 text-center">
       {{ textBeforeLink }}
       <v-btn
         text
