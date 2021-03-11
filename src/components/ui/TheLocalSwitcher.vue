@@ -12,13 +12,14 @@
         rounded
         small
       >
-        {{ activeLang }}
+        {{ supportedLocales }}
+
       </v-btn>
     </template>
 
     <v-list>
       <v-list-item
-        v-for="item in availableLangs"
+        v-for="item in supportedLocales"
         :key="item"
         link
         @click="setActive(item)"
@@ -30,31 +31,37 @@
 </template>
 
 <script>
+import { Trans } from '@/plugins/translation'
+
 export default {
+  name: 'TheLocalSwitcher',
   data() {
     return {
       languages: ['English', 'Russian', 'Ukrainian'],
       selected: 0
     }
   },
-  methods: {
-    setActive(lang) {
-      const locale = lang.toLowerCase().substring(0, 2)
-      if (this.$i18n.locale !== locale) {
-        this.selected = this.languages.findIndex(i => i === lang)
-        this.$i18n.locale = locale
-
-        const to = this.$router.resolve({ params: { locale } })
-        this.$router.push(to.location)
-      }
-    }
-  },
   computed: {
+    supportedLocales() {
+      return Trans.supportedLocales
+    },
     activeLang() {
       return this.languages[this.selected]
     },
     availableLangs() {
       return this.languages.filter(el => el !== this.activeLang)
+    }
+  },
+  methods: {
+    setActive(locale) {
+      // const locale = lang.toLowerCase().substring(0, 2)
+      if (this.$i18n.locale !== locale) {
+        // this.selected = this.languages.findIndex(i => i === lang)
+        const to = this.$router.resolve({ params: { locale } })
+        return Trans.changeLocale(locale).then(() => {
+          this.$router.push(to.location)
+        })
+      }
     }
   }
 }

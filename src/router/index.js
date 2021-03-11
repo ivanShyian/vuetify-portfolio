@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import i18n from '@/plugins/i18n'
+import { Trans } from '@/plugins/translation'
 
 Vue.use(VueRouter)
 
@@ -14,18 +14,7 @@ const routes = [
     component: {
       template: '<router-view></router-view>'
     },
-    beforeEnter: (to, from, next) => {
-      const locale = to.params.locale
-      const supportedLocales = process.env.VUE_APP_I18N_SUPPORTED_LOCALE.split(',')
-
-      if (!supportedLocales.includes(locale)) {
-        return next('en')
-      }
-      if (i18n.locale !== locale) {
-        i18n.locale = locale
-      }
-      return next()
-    },
+    beforeEnter: Trans.routeMiddleware,
     children: [{
       path: '',
       name: 'About',
@@ -56,7 +45,7 @@ const routes = [
   {
     path: '*',
     redirect() {
-      return process.env.VUE_APP_I18N_LOCALE
+      return Trans.defaultLocale
     }
   }
 ]

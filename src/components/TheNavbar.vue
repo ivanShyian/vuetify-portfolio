@@ -12,7 +12,7 @@
       <v-toolbar-items class="hidden-sm-and-down">
         <TheLocalSwitcher></TheLocalSwitcher>
         <router-link v-for="(link, i) in items"
-                     :to="{ name: link.title, params: { locale: $i18n.locale } }"
+                     :to="$i18nRoute({ name: link.title })"
                      v-slot="{ navigate }"
                      :key="i"
                      custom
