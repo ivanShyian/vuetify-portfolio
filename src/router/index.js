@@ -17,8 +17,8 @@ const routes = [
     beforeEnter: Trans.routeMiddleware,
     children: [{
       path: '',
-      name: 'About',
-      component: load('About')
+      name: 'Resume',
+      component: load('Resume')
     },
     {
       path: '/:locale/projects',

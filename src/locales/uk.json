@@ -1,11 +1,11 @@
 {
   "navigation": {
-    "about": "Про мене",
+    "resume": "Резюме",
     "projects": "Проекти",
     "study": "Навчання",
     "contacts": "Контакти"
   },
-  "about": {
-    "page": "<!--Про мене-->"
+  "resume": {
+    "page": "<!--Резюме-->"
   }
 }

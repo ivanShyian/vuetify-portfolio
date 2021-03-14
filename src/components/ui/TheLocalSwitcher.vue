@@ -12,8 +12,7 @@
         rounded
         small
       >
-        {{ supportedLocales }}
-
+        {{ currentLocale }}
       </v-btn>
     </template>
 
@@ -37,26 +36,23 @@ export default {
   name: 'TheLocalSwitcher',
   data() {
     return {
-      languages: ['English', 'Russian', 'Ukrainian'],
-      selected: 0
+      languages: ['English', 'Russian', 'Ukrainian']
     }
   },
   computed: {
     supportedLocales() {
-      return Trans.supportedLocales
+      return this.languages.filter(i => i !== this.currentLocale)
     },
-    activeLang() {
-      return this.languages[this.selected]
-    },
-    availableLangs() {
-      return this.languages.filter(el => el !== this.activeLang)
+    currentLocale() {
+      return this.languages.find(el => {
+        return el.toLowerCase().substring(0, 2) === Trans.currentLocale
+      })
     }
   },
   methods: {
-    setActive(locale) {
-      // const locale = lang.toLowerCase().substring(0, 2)
+    setActive(newLocale) {
+      const locale = newLocale.toLowerCase().substring(0, 2)
       if (this.$i18n.locale !== locale) {
-        // this.selected = this.languages.findIndex(i => i === lang)
         const to = this.$router.resolve({ params: { locale } })
         return Trans.changeLocale(locale).then(() => {
           this.$router.push(to.location)

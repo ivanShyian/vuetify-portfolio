@@ -1,4 +1,6 @@
 import { i18n } from '@/i18n'
+import axios from 'axios'
+import store from '../store'
 
 const Trans = {
   get defaultLocale() {
@@ -19,7 +21,6 @@ const Trans = {
     }
 
     if (i18n.locale === locale) return Promise.resolve(locale)
-
     return Trans.loadLocaleFile(locale).then(msgs => {
       i18n.setLocaleMessage(locale, msgs.default || msgs)
       return Trans.setI18nLocaleInServices(locale)
@@ -28,17 +29,40 @@ const Trans = {
   isLocaleSupported(locale) {
     return Trans.supportedLocales.includes(locale)
   },
-  loadLocaleFile(locale) {
+  async loadLocaleFile(locale) {
+    await store.dispatch('languages/loadLanguage')
     return import(`@/locales/${locale}.json`)
   },
   setI18nLocaleInServices(locale) {
     Trans.currentLocale = locale
+    axios.defaults.headers.common['Accept-language'] = locale
     document.querySelector('html').setAttribute('lang', locale)
     return locale
   },
+  getUserSupportedLocale() {
+    const userPreferredLocale = Trans.getUserLocale()
+
+    if (Trans.isLocaleSupported(userPreferredLocale.locale)) {
+      return userPreferredLocale.locale
+    }
+
+    if (Trans.isLocaleSupported(userPreferredLocale.localeNoISO)) {
+      return userPreferredLocale.localeNoISO
+    }
+
+    return Trans.defaultLocale
+  },
+  getUserLocale() {
+    const locale = window.navigator.language || window.navigator.userLanguage || Trans.defaultLocale
+
+    return {
+      locale: locale,
+      localeNoISO: locale.split('-')[0]
+    }
+  },
   routeMiddleware(to, from, next) {
     const locale = to.params.locale
-    if (!Trans.isLocaleSupported(locale)) return next(Trans.defaultLocale)
+    if (!Trans.isLocaleSupported(locale)) return next(Trans.getUserSupportedLocale())
     return Trans.changeLocale(locale).then(() => next())
   },
   i18nRoute(to) {

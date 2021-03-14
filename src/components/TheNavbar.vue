@@ -65,7 +65,7 @@ export default {
       drawer: false,
       items: [
         {
-          title: 'About',
+          title: 'Resume',
           src: '/',
           icon: 'fa-user-ninja'
         },

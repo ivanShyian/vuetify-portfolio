@@ -6,10 +6,10 @@
         elevation="0"
       >
         <v-card-title class="justify-end text--disabled px-2 py-0 my-font">
-          {{ $t('about.page') }}
+          {{ $t('resume.page') }}
         </v-card-title>
       </v-card>
-      <v-row justify="center" v-if="false">
+      <v-row justify="center">
         <v-col cols="10" sm="8" md="7" lg="6">
           <v-card elevation="4"
                   outlined
@@ -35,28 +35,28 @@
                 >
                   <div class="pb-sm-5 pb-2">
                     <h3 class="pb-2 font-weight-bold text-uppercase text-h6 text-md-h5"
-                    >{{ personal.name }}</h3>
-                    <span class="pb-2">{{ personal.age }}</span><br>
-                    <span>{{ personal.position }}</span><br>
-                    <span>{{ personal.place }}</span>
+                    >{{ $t('resume.name') }}</h3>
+                    <span class="pb-2">{{ $t('resume.age') }}</span><br>
+                    <span>{{ $t('resume.position') }}</span><br>
+                    <span>{{ $t('resume.place') }}</span>
                   </div>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row class="mt-0">
                 <v-col>
-                  <p>{{ personal.content }}</p>
+                  <p>{{ $t('resume.content') }}</p>
                 </v-col>
               </v-row>
               <v-divider></v-divider>
               <v-row class="py-2">
                 <v-col>
-                  <span>Stack:</span>
+                  <span>{{ $t('resume.stackLabel') }}</span>
                   <ul class="d-flex pt-2">
                     <li v-for="(item, i) in stack"
                         :key="i"
                         class="text-body-2"
-                    >{{ item.title }}
+                    >{{ item }}
                     </li>
                   </ul>
                 </v-col>
@@ -79,7 +79,8 @@ export default {
   },
   data() {
     return {
-      loading: false
+      loading: false,
+      stack: this.$store.state.languages.stack
     }
   },
   computed: {
