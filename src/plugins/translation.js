@@ -1,6 +1,7 @@
 import { i18n } from '@/i18n'
 import axios from 'axios'
 import store from '../store'
+import { JSFileIsNotEmpty } from '../utils/fs'
 
 const Trans = {
   get defaultLocale() {
@@ -19,9 +20,10 @@ const Trans = {
     if (!Trans.isLocaleSupported(locale)) {
       return Promise.reject(new Error('Locale not supporting'))
     }
-
     if (i18n.locale === locale) return Promise.resolve(locale)
+
     return Trans.loadLocaleFile(locale).then(msgs => {
+      console.log(msgs)
       i18n.setLocaleMessage(locale, msgs.default || msgs)
       return Trans.setI18nLocaleInServices(locale)
     })
@@ -30,8 +32,10 @@ const Trans = {
     return Trans.supportedLocales.includes(locale)
   },
   async loadLocaleFile(locale) {
-    await store.dispatch('languages/loadLanguage')
-    return import(`@/locales/${locale}.json`)
+    if (!JSFileIsNotEmpty(locale)) {
+      await store.dispatch('languages/loadLanguage', locale)
+    }
+    return import(`@/locales/${locale}.js`)
   },
   setI18nLocaleInServices(locale) {
     Trans.currentLocale = locale

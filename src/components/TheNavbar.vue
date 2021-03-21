@@ -70,8 +70,8 @@ export default {
           icon: 'fa-user-ninja'
         },
         {
-          title: 'Expirience',
-          src: '/expirience',
+          title: 'Experience',
+          src: '/experience',
           icon: 'fa-briefcase'
         },
         {
