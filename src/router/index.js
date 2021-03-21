@@ -21,9 +21,9 @@ const routes = [
       component: load('Resume')
     },
     {
-      path: '/:locale/projects',
-      name: 'Projects',
-      component: load('Projects')
+      path: '/:locale/expirience',
+      name: 'Expirience',
+      component: load('Expirience')
     },
     {
       path: '/:locale/study',

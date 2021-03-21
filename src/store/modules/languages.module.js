@@ -10,7 +10,7 @@ export default {
   },
   actions: {
     async loadLanguage(_, payload) {
-      const { data } = await axios.get(`${URL}/owner.json`)
+      const { data } = await axios.get(`${URL}/${payload.lang}.json`)
       console.log(data)
     }
   }

@@ -8,13 +8,13 @@
           elevation="0"
         >
           <v-card-title class="justify-end text--disabled text-button px-2 py-0 my-font"
-                        v-text="'<!--Projects-->'"
+                        v-text="$t('expirience.page')"
           ></v-card-title>
         </v-card>
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="proj in projects"
+      <v-col v-for="(proj, i) in projects"
              :key="proj.id"
              cols="12" sm="6" md="4"
       >
@@ -23,20 +23,22 @@
           min-height="400"
           elevation="2"
           outlined
-          class="d-flex flex-column pt-2">
+          class="d-flex flex-column pt-2"
+        >
           <v-img
             max-height="150"
             contain
             :src="require(`@/assets/projects/${proj.img.first}`)"
           ></v-img>
           <v-divider class="mt-3"></v-divider>
-          <v-card-title class="text-subtitle-1 text-sm-h6 font-weight-regular">{{ proj.label }}</v-card-title>
-          <v-card-text>{{ proj.subText }}</v-card-text>
+          <v-card-title class="text-subtitle-1 text-sm-h6 font-weight-regular"
+          >{{ $t(`expirience.card[${i}].title`) }}</v-card-title>
+          <v-card-text>{{ $t(`expirience.card[${i}].text`) }}</v-card-text>
           <v-card-actions class="justify-end mt-auto">
             <v-btn color="#29B6F6"
                    dark
-                   @click="$router.push(`/project/${proj.id}`)"
-            >Open
+                   :to="$i18nRoute({ name: 'Project', params: { id: proj.id } })"
+            >{{ $t(`openButton`) }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -48,17 +50,17 @@
           elevation="1"
           outlined
         >
-          <v-card-title class="justify-center">{{ additional.label }}</v-card-title>
+          <v-card-title class="justify-center">{{ $t('expirience.additionalLabel') }}</v-card-title>
           <v-divider></v-divider>
           <v-card-text
-          >{{ additional.text }}
+          >{{ $t('expirience.additional') }}
             <v-btn
               text
               link
               small
               class="py-0 text-caption"
               target="_blank"
-              :href="additional.link">*Link*
+              :href="additional.link">{{ $t('link') }}
             </v-btn>
           </v-card-text>
         </v-card>

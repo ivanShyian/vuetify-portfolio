@@ -95,7 +95,7 @@ export default {
         case 'lg':
           return 200
       }
-      return ''
+      return 200
     },
     breakpoint() {
       return this.$vuetify.breakpoint.width >= 460

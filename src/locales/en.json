@@ -1,7 +1,9 @@
 {
+  "link": "*Link*",
+  "openButton": "OPEN",
   "navigation": {
     "resume": "Resume",
-    "projects": "Projects",
+    "expirience": "Expirience",
     "study": "Study",
     "contacts": "Contacts"
   },
@@ -13,5 +15,15 @@
     "place": "Kyiv, Ukraine",
     "position": "Frontend developer",
     "stackLabel": "Stack"
+  },
+  "expirience": {
+    "page": "<!--Expirience-->",
+    "card": [
+      { "title": "FitBody web-application", "text": "Fitbody application that help people to gain, lose or keep weight and easily enabled to follow your diet" },
+      { "title": "Vue-Store", "text": "Store where you can commit that has most of functionality like any other online-store" },
+      { "title": "Starwars API", "text": "Web-dictionary of the Starwars universe" }
+    ],
+    "additionalLabel": "Additional info",
+    "additional": "Of course, these are not all of my projects. There were a couple of sites that I could show you but I think you are not interested in pure html and css. At this point in time, all forces are thrown into the development with Vue2, Vue3 and also NuxtJS. Anyway you can check my github for all repositories that i have: "
   }
 }
