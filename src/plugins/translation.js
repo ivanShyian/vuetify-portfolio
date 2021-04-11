@@ -3,6 +3,8 @@ import axios from 'axios'
 import store from '../store'
 import { JSFileIsNotEmpty } from '../utils/fs'
 
+let previousLocale = null
+
 const Trans = {
   get defaultLocale() {
     return process.env.VUE_APP_I18N_LOCALE
@@ -16,27 +18,36 @@ const Trans = {
   set currentLocale(locale) {
     i18n.locale = locale
   },
+
   changeLocale(locale) {
     if (!Trans.isLocaleSupported(locale)) {
       return Promise.reject(new Error('Locale not supporting'))
     }
     if (i18n.locale === locale) return Promise.resolve(locale)
 
+    // Take localStorage clean :)
+    localStorage.removeItem(previousLocale)
+
     return Trans.loadLocaleFile(locale).then(msgs => {
-      console.log(msgs)
       i18n.setLocaleMessage(locale, msgs.default || msgs)
       return Trans.setI18nLocaleInServices(locale)
     })
   },
+
   isLocaleSupported(locale) {
     return Trans.supportedLocales.includes(locale)
   },
+
   async loadLocaleFile(locale) {
     if (!JSFileIsNotEmpty(locale)) {
       await store.dispatch('languages/loadLanguage', locale)
     }
-    return import(`@/locales/${locale}.js`)
+
+    const res = await import(`@/locales/${locale}.js`)
+    previousLocale = Object.keys(res)[0]
+    return Object.keys(res).map(item => res[item])[0]
   },
+
   setI18nLocaleInServices(locale) {
     Trans.currentLocale = locale
     axios.defaults.headers.common['Accept-language'] = locale

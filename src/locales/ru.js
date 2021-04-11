@@ -1,1 +1,1 @@
-export default JSON.parse(localStorage.getItem('ru')) ?? {}
+export const ru = JSON.parse(localStorage.getItem('ru')) ?? {}
