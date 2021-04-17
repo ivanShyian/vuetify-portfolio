@@ -28,11 +28,11 @@ export default {
   computed: {
     textBeforeLink() {
       if (this.item.type === 'phone') {
-        return 'Phone: '
+        return this.$t('phone') + ':'
       } else if (this.item.type === 'email') {
         return 'Email: '
       } else {
-        return 'Link: '
+        return this.$t('link') + ':'
       }
     },
     correctLink() {
@@ -45,12 +45,10 @@ export default {
       }
     },
     linkToShow() {
-      if (this.item.name === 'CV (Resume)') {
-        return '*Too long link - just click*'
-      } else if (this.item.type === 'phone' || this.item.type === 'email') {
+      if (this.item.type === 'phone' || this.item.type === 'email') {
         return this.item.link
       } else {
-        return this.item.link.substring(8)
+        return this.item.link.length > 33 ? this.item.link.substring(8, 33) + '...' : this.item.link.substring(8)
       }
     }
   }

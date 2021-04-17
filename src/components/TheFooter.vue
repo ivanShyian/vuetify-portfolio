@@ -9,7 +9,10 @@
         tile
         color="#29B6F6"
         class="white--text text-center">
-        <v-card-text class="pa-0">
+        <v-card-text
+          class="pa-0"
+          v-if="social.length"
+        >
           <v-btn
             v-for="item in social"
             :key="item.id"
@@ -37,7 +40,7 @@
 export default {
   computed: {
     social() {
-      return this.$store.getters.socialFooter
+      return this.$store.getters['statement/socialFooter']
     }
   }
 }

@@ -79,8 +79,7 @@ export default {
   },
   data() {
     return {
-      loading: false,
-      stack: this.$store.state.languages.stack
+      loading: false
     }
   },
   computed: {
@@ -99,6 +98,9 @@ export default {
     },
     breakpoint() {
       return this.$vuetify.breakpoint.width >= 460
+    },
+    stack() {
+      return this.$store.getters['statement/stack']
     }
   },
   components: { AppLoader }

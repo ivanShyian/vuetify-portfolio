@@ -41,7 +41,8 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
-          :to="item.src"
+          :to="$i18nRoute({ name: item.title })"
+          :exact="item.src === '/'"
           link
         >
           <v-list-item-icon>

@@ -44,8 +44,16 @@ const Trans = {
     }
 
     const res = await import(`@/locales/${locale}.js`)
+    const variables = Object.keys(res).map(i => res[i])[0]
+
+    if (!Object.keys(variables).length) {
+      const newWindowLocation = window.location.href.split('/')
+      newWindowLocation.splice(3, 1, locale)
+      window.location.href = newWindowLocation.join('/')
+    }
+
     previousLocale = Object.keys(res)[0]
-    return Object.keys(res).map(item => res[item])[0]
+    return variables
   },
 
   setI18nLocaleInServices(locale) {

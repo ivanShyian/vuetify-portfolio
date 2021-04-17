@@ -1,12 +1,12 @@
 <template>
-  <v-row justify="center">
+  <v-row justify="center" v-if="this.project">
     <v-col cols="10" :md="imageEnough ? 10 : 7">
       <v-card
         min-height="600"
         elevation="3"
         outlined
         class="d-flex flex-column">
-        <v-row v-if="project.img">
+        <v-row v-if="project.img.length">
           <v-col v-if="imageEnough"
                  cols="12"
                  md="8"
@@ -16,7 +16,7 @@
               class="ma-2 mr-md-1"
               contain
               width="auto"
-              :src="require(`@/assets/projects/${project.img.first}`)"
+              :src="require(`@/assets/projects/${project.img[0]}`)"
             ></v-img>
           </v-col>
           <v-col v-if="imageEnough"
@@ -27,13 +27,13 @@
               class="ma-2 my-1 my-md-2 ml-md-1 mb-md-0"
               :width="width"
               contain
-              :src="require(`@/assets/projects/${project.img.second}`)"
+              :src="require(`@/assets/projects/${project.img[1]}`)"
             ></v-img>
             <v-img
               :width="width"
               class="ma-2 my-1 my-md-2 ml-md-1 mb-md-0"
               contain
-              :src="require(`@/assets/projects/${project.img.third}`)"
+              :src="require(`@/assets/projects/${project.img[2]}`)"
             ></v-img>
           </v-col>
           <v-col v-else
@@ -45,7 +45,7 @@
               class="ma-2 mr-md-2"
               contain
               :width="widthOne"
-              :src="require(`@/assets/projects/${project.img.first}`)"
+              :src="require(`@/assets/projects/${project.img[0]}`)"
             ></v-img>
           </v-col>
         </v-row>
@@ -53,11 +53,11 @@
         <v-row>
           <v-col>
             <v-card-title class="text-subtitle-1 text-sm-h5 font-weight-medium"
-            >{{ project.label }}
+            >{{ $t(`experience.card[${findExactIndex}].title`) }}
             </v-card-title>
-            <v-card-subtitle>{{ project.subText }}</v-card-subtitle>
-            <v-card-text v-if="project.text.projectText">
-              {{ project.text.projectText }}
+            <v-card-subtitle>{{ $t(`experience.card[${findExactIndex}].smallDescription`) }}</v-card-subtitle>
+            <v-card-text>
+              {{ $t(`experience.card[${findExactIndex}].text`) }}
             </v-card-text>
             <v-card-actions class="justify-end mt-auto">
             </v-card-actions>
@@ -70,14 +70,6 @@
 
 <script>
 export default {
-  mounted() {
-    this.project = this.$store.getters.projects.find(e => e.id === +this.$route.params.id)
-  },
-  data() {
-    return {
-      project: {}
-    }
-  },
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     width() {
@@ -101,8 +93,14 @@ export default {
       }
       return ''
     },
+    project() {
+      return this.$store.getters['statement/exactProject'](this.$route.params.link)
+    },
+    findExactIndex() {
+      return this.$store.getters['statement/projects'].findIndex(el => el.link === this.$route.params.link)
+    },
     imageEnough() {
-      return Object.keys(this.project).length ? Object.keys(this.project.img).length > 1 : null
+      return this.project ? Object.keys(this.project.img).length > 1 : false
     }
   }
 }

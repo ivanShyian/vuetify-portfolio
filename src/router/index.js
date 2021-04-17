@@ -37,7 +37,7 @@ const routes = [
 
     },
     {
-      path: '/:locale/project/:id?',
+      path: '/:locale/experience/:link?',
       name: 'Project',
       component: load('Project')
     }]

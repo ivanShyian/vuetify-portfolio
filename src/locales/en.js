@@ -56,7 +56,8 @@ export const en = {
     }],
     page: '<!--Experience-->'
   },
-  link: '*Link*',
+  link: 'Link',
+  phone: 'Phone',
   navigation: {
     contacts: 'Contacts',
     experience: 'Experience',

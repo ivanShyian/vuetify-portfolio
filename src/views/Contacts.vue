@@ -6,7 +6,7 @@
           elevation="0"
         >
           <v-card-title class="justify-end text--disabled text-button px-2 py-0 my-font"
-                        v-text="'<!--Contacts-->'"
+                        v-text="$t('contacts.page')"
           ></v-card-title>
         </v-card>
       </v-col>
@@ -27,7 +27,7 @@ import ContactsCard from '@/components/contacts/ContactsCard'
 export default {
   computed: {
     social() {
-      return this.$store.getters.social
+      return this.$store.getters['statement/contacts']
     }
   },
   components: { ContactsCard }
