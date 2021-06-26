@@ -21,7 +21,12 @@ const routes = [
       component: load('Resume')
     },
     {
-      path: '/:locale/experience',
+      path: '/:locale/projects',
+      name: 'Projects',
+      component: load('Projects')
+    },
+    {
+      path: '/:locale/work-experience',
       name: 'Experience',
       component: load('Experience')
     },
@@ -34,10 +39,9 @@ const routes = [
       path: '/:locale/contacts',
       name: 'Contacts',
       component: load('Contacts')
-
     },
     {
-      path: '/:locale/experience/:link?',
+      path: '/:locale/projects/:link?',
       name: 'Project',
       component: load('Project')
     }]
@@ -52,7 +56,9 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
+  linkActiveClass: 'active-link',
+  linkExactActiveClass: 'active-link'
 })
 
 export default router

@@ -4,13 +4,15 @@
   >
     <template v-slot:activator="{ attrs, on }">
       <v-btn
-        elevation="0"
+        elevation="1"
         color="transparent"
-        class="white--text mr-5"
+        class="mr-5"
         v-bind="attrs"
         v-on="on"
-        rounded
+        :rounded="!isDrawerView"
         small
+        :light="isDrawerView"
+        :width="isDrawerView ? '100%' : 'auto'"
       >
         {{ currentLocale }}
       </v-btn>
@@ -34,6 +36,13 @@ import { Trans } from '@/plugins/translation'
 
 export default {
   name: 'TheLocalSwitcher',
+  props: {
+    isDrawerView: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
   data() {
     return {
       languages: ['English', 'Russian', 'Ukrainian']

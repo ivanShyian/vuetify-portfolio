@@ -6,22 +6,20 @@ export default {
     return {
       userProjects: [],
       userContacts: [],
-      userStack: [],
+      userStack: {},
       userStudy: []
     }
   },
   mutations: {
     setActualProjects(state, payload) {
-      state.userProjects = []
       state.userProjects = [...payload]
     },
     setActualContacts(state, payload) {
-      state.userContacts = []
       state.userContacts = [...payload]
     },
     setActualStack(state, payload) {
-      state.userStack = []
-      state.userStack = [...payload]
+      console.log(payload)
+      state.userStack = payload
     },
     setActualStudy(state, payload) {
       const list = Object.keys(payload).map(el => {
@@ -30,19 +28,20 @@ export default {
           ...payload[el]
         }
       })
-      state.userStudy = []
       state.userStudy = [...list]
     }
   },
   actions: {
-    async loadStatementData({ commit }) {
+    async loadStatementData({ commit, dispatch }) {
       try {
         const { data } = await axios.get(`${process.env.VUE_APP_FB_BASE}/state.json`)
         if (!data) throw new Error('Data doesn\'t exists')
         commit('setActualProjects', data.projects)
         commit('setActualContacts', data.contacts)
         commit('setActualStack', data.stack)
-        commit('setActualStudy', data.stydy)
+        commit('setActualStudy', data.stydy) // :)))
+        dispatch('loader/loadingStatusHandler', false, { root: true })
+        console.log({ data })
       } catch (e) {
         console.warn(e)
       }

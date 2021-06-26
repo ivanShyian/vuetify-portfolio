@@ -2,15 +2,7 @@
   <v-sheet
     color="white"
   >
-    <v-card
-      elevation="0"
-      v-if="courses.length"
-    >
-      <v-card-title
-        class="justify-end text--disabled text-button px-2 py-0 my-font"
-        v-text="$t('study.page')"
-      ></v-card-title>
-    </v-card>
+    <app-page-title/>
     <v-row
       justify="center"
       class="pt-6"
@@ -19,7 +11,6 @@
         <v-expansion-panels
           v-model="panel"
           :disabled="disabled"
-          multiple
         >
           <v-expansion-panel
             v-for="(c, i) in courses"
@@ -54,7 +45,9 @@
 </template>
 
 <script>
+import AppPageTitle from '../components/ui/AppPageTitle'
 export default {
+  components: { AppPageTitle },
   data() {
     return {
       panel: [],

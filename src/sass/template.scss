@@ -6,6 +6,20 @@ $body-font-family-second: 'Montserrat';
 $title-font: 'Poppins';
 $title-font-second: 'Montserrat';
 
-body {
-  overflow-y: hidden;
+body::-webkit-scrollbar {
+  display: none;
 }
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.full-height {
+  height: 100%;
+}
+//.active-class {
+//  display: none;
+//}
+

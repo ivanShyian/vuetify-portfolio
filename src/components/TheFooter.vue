@@ -11,7 +11,16 @@
         class="white--text text-center">
         <v-card-text
           class="pa-0"
-          v-if="social.length"
+          v-if="loading"
+        >
+          <v-skeleton-loader
+            v-bind="attrs"
+            type="avatar@4"
+          ></v-skeleton-loader>
+        </v-card-text>
+        <v-card-text
+          class="pa-0"
+          v-else
         >
           <v-btn
             v-for="item in social"
@@ -37,8 +46,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
+  data() {
+    return {
+      attrs: {
+        class: 'd-flex justify-center pb-1 skeleton-footer-btns'
+      }
+    }
+  },
   computed: {
+    ...mapGetters({
+      loading: 'loader/loading'
+    }),
     social() {
       return this.$store.getters['statement/socialFooter']
     }
@@ -46,6 +67,13 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.skeleton-footer-btns {
+  ::v-deep .v-skeleton-loader__avatar {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    margin: 0 1.1rem;
+  }
+}
 </style>

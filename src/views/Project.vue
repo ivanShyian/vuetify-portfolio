@@ -53,11 +53,11 @@
         <v-row>
           <v-col>
             <v-card-title class="text-subtitle-1 text-sm-h5 font-weight-medium"
-            >{{ $t(`experience.card[${findExactIndex}].title`) }}
+            >{{ $t(`projects.card[${findExactIndex}].title`) }}
             </v-card-title>
-            <v-card-subtitle>{{ $t(`experience.card[${findExactIndex}].smallDescription`) }}</v-card-subtitle>
+            <v-card-subtitle>{{ $t(`projects.card[${findExactIndex}].smallDescription`) }}</v-card-subtitle>
             <v-card-text>
-              {{ $t(`experience.card[${findExactIndex}].text`) }}
+              {{ $t(`projects.card[${findExactIndex}].text`) }}
             </v-card-text>
             <v-card-actions class="justify-end mt-auto">
             </v-card-actions>
@@ -71,7 +71,6 @@
 <script>
 export default {
   computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
     width() {
       switch (this.$vuetify.breakpoint.name) {
         case 'xs':
@@ -79,6 +78,8 @@ export default {
         case 'sm':
           return 150
         case 'md':
+          return 'auto'
+        default:
           return 'auto'
       }
     },
@@ -90,8 +91,9 @@ export default {
           return 0
         case 'lg':
           return 0
+        default:
+          return 0
       }
-      return ''
     },
     project() {
       return this.$store.getters['statement/exactProject'](this.$route.params.link)

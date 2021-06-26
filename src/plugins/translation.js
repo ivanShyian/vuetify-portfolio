@@ -40,6 +40,7 @@ const Trans = {
 
   async loadLocaleFile(locale) {
     if (!JSFileIsNotEmpty(locale)) {
+      await store.dispatch('loader/loadingStatusHandler', true)
       await store.dispatch('languages/loadLanguage', locale)
     }
 

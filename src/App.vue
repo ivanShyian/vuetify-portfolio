@@ -26,7 +26,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "template";
+@import "sass/template";
 .v-application {
   font-family: $body-font-family, $body-font-family-second, sans-serif !important;
   .title {

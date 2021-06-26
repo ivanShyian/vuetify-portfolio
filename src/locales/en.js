@@ -35,7 +35,7 @@ export const en = {
     }],
     page: '<!--Contacts-->'
   },
-  experience: {
+  projects: {
     additional: 'Of course, these are not all of my projects. There were a couple of sites that I could show you but I think you are not interested in pure html and css. At this point in time, all forces are thrown into the development with Vue2, Vue3 and also NuxtJS. Anyway you can check my github for all repositories that i have: ',
     additionalLabel: 'Additional info',
     card: [{
@@ -54,25 +54,34 @@ export const en = {
       text: 'Starwars API was added here to show my skills in REST API',
       title: 'Starwars API'
     }],
+    page: '<!--Projects-->'
+  },
+  experience: {
     page: '<!--Experience-->'
   },
   link: 'Link',
   phone: 'Phone',
   navigation: {
     contacts: 'Contacts',
-    experience: 'Experience',
+    projects: 'Projects',
     resume: 'Resume',
-    study: 'Study'
+    study: 'Study',
+    experience: 'Experience'
   },
   openButton: 'OPEN',
   resume: {
     age: '23 years-old',
-    content: 'Hello! My name is Ivan, I am 23 years old and I was born in Kiev. In February of this year, I graduated from university and received my bachelor\'s degree in Software Engineering. For a year I have been intensively studying front-end development. The entire learning process proceeded independently through reading the documentation, analyzing examples of experienced developers and, of course, with the help of courses. Most of my knowledge I received in courses that raised my knowledge to a new level. I also continue to develop and work on my skills and myself in particular!',
+    content: 'Hello! My name is Ivan, I am 23 years old and I was born in Kiev. In February of this year, I graduated from university and received my bachelor\'s degree in Software Engineering. More than a year I have been intensively studying front-end development. The entire learning process proceeded independently through reading the documentation, analyzing examples of experienced developers and, of course, with the help of courses. Most of my knowledge I received in courses that raised my knowledge to a new level. I also continue to develop and work on my skills and myself in particular!',
     name: 'Ivan Shyian',
     page: '<!--Resume-->',
     place: 'Kyiv, Ukraine',
     position: 'Frontend developer',
-    stackLabel: 'Stack'
+    stackLabel: 'Stack',
+    stackParagraphs: {
+      code: 'Programming languages and Frameworks',
+      other: 'Other useful things',
+      styles: 'СSS and UI Frameworks'
+    }
   },
   study: {
     author: 'Author',
@@ -98,6 +107,11 @@ export const en = {
       content: 'The most useful course where i learned how to use Vue 3 in production. How develop any application on this framework',
       name: 'Vue 3 - Profession',
       theoryTime: '20 hours'
+    }, {
+      author: 'Maximilian Schwarzmüller',
+      content: 'Full typescript course + React with TS',
+      name: 'Understanding TypeScript - 2021 Edition',
+      theoryTime: '15 hours'
     }],
     page: '<!--Study-->',
     theoryTime: 'Theory time'
