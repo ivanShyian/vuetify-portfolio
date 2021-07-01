@@ -7,7 +7,8 @@ export default {
       userProjects: [],
       userContacts: [],
       userStack: {},
-      userStudy: []
+      userStudy: [],
+      userJobs: []
     }
   },
   mutations: {
@@ -29,6 +30,10 @@ export default {
         }
       })
       state.userStudy = [...list]
+    },
+    setActualJobs(state, payload) {
+      state.userJobs = payload
+      console.log(state.userJobs)
     }
   },
   actions: {
@@ -40,6 +45,7 @@ export default {
         commit('setActualContacts', data.contacts)
         commit('setActualStack', data.stack)
         commit('setActualStudy', data.stydy) // :)))
+        commit('setActualJobs', data.jobs)
         dispatch('loader/loadingStatusHandler', false, { root: true })
         console.log({ data })
       } catch (e) {
@@ -65,6 +71,9 @@ export default {
     },
     socialFooter(state) {
       return state.userContacts.filter(e => e.id >= 3 && e.id < 7)
+    },
+    jobs(state) {
+      return state.userJobs
     }
   }
 }

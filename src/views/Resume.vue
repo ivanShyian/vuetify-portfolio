@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div class="full-height">
     <app-page-title/>
-    <v-row justify="center" class="mt-0">
-      <v-col cols="12" sm="6" class="py-0 py-sm-4">
+    <v-row class="mt-0">
+      <v-col cols="12" sm="6" class="py-0 py-sm-1">
         <v-card elevation="4"
                 class="py-4 my-0"
                 outlined
                 height="97%"
         >
-          <v-container>
-            <v-row class="pb-2 pb-sm-4">
+          <v-container class="full-height d-flex flex-column">
+            <v-row class="pb-2 pb-sm-4 my-xl-10 d-flex align-center">
               <v-col
                 :cols="breakpoint ? 6 : 12"
                 lg="5"
-                class="text-center text-sm-left"
+                class="d-flex justify-center"
               >
                 <v-avatar
                   color="teal"
@@ -27,34 +27,36 @@
                 :class="breakpoint ? 'pt-6' : 'pt-2'"
               >
                 <div class="pb-sm-5 pb-2">
-                  <h3 class="pb-2 font-weight-bold text-uppercase text-h6 text-md-h5"
+                  <h3 class="pb-2 font-weight-bold text-uppercase text-subtitle-1 text-md-h6"
                   >{{ $t('resume.name') }}</h3>
-                  <span class="pb-2">{{ $t('resume.age') }}</span><br>
-                  <span>{{ $t('resume.position') }}</span><br>
-                  <span>{{ $t('resume.place') }}</span>
+                  <div class="text-xl-h6 font-weight-regular">
+                    <span class="pb-2">{{ $t('resume.age') }}</span><br>
+                    <span>{{ $t('resume.position') }}</span><br>
+                    <span>{{ $t('resume.place') }}</span>
+                  </div>
                 </div>
               </v-col>
             </v-row>
             <v-divider></v-divider>
-            <v-row class="mt-0">
-              <v-col>
+            <v-row class="mt-0 d-flex align-center px-xl-16 text-xl-h6 font-weight-regular">
+              <v-col class="align-center">
                 <p
-                  :style="currentLangIsNotEnglish ? 'fontSize: 15px' : ''"
+                  style="font-size: 14px"
                 >{{ $t('resume.content') }}</p>
               </v-col>
             </v-row>
           </v-container>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="6" class="py-0 py-sm-4">
+      <v-col cols="12" sm="6" class="py-0 mb-8 mb-sm-0 py-sm-1">
         <v-card elevation="4"
                 outlined
                 height="97%"
         >
-          <v-container>
-            <v-row class="py-2">
+          <v-container class="full-height">
+            <v-row class="pt-5 pb-2 pa-4 pa-xl-10">
               <v-col>
-                <span class="font-weight-bold">{{ $t('resume.stackLabel') }}</span>
+                <p class="font-weight-bold mb-0 text-xl-h6">{{ $t('resume.stackLabel') }}</p>
                 <div class="pt-2">
                   <div v-for="(val, name) in stack"
                       :key="name"
@@ -65,7 +67,7 @@
                     <ul>
                       <li
                         v-for="(skill, idx) in val"
-                        class="ml-6"
+                        class="ml-6 text-xl-body-1"
                         :key="idx">
                         {{ skill }}
                       </li>
@@ -96,9 +98,11 @@ export default {
         case 'sm':
           return 150
         case 'md':
-          return 200
+          return 160
         case 'lg':
-          return 200
+          return 160
+        case 'xl':
+          return 250
       }
       return 200
     },

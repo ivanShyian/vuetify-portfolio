@@ -19,7 +19,29 @@ html, body {
 .full-height {
   height: 100%;
 }
-//.active-class {
-//  display: none;
-//}
+
+.viewer-footer {
+  .viewer-toolbar ul {
+    li {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    li[data-viewer-action=play],
+    li[data-viewer-action=reset] {
+      display: none;
+    }
+    li[data-viewer-action=prev] {
+      margin-right: 5px;
+    }
+    li[data-viewer-action=prev]:before {
+      margin-right: 5px;
+    }
+    li[data-viewer-action=next]:before {
+      margin-left: 5px;
+    }
+  }
+}
 

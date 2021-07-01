@@ -2,6 +2,7 @@
   <v-row>
     <v-col>
       <v-card
+        class="label-of-page"
         elevation="0"
       >
         <v-card-title class="justify-end text--disabled font-weight-light text-button px-2 py-0 my-font"
@@ -20,3 +21,5 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+</style>

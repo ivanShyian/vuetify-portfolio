@@ -15,6 +15,10 @@ export default {
   data() {
     return {}
   },
+  created() {
+    // To unlock contacts page
+    localStorage.setItem('lock', 'opened')
+  },
   mounted() {
     this.$store.dispatch('statement/loadStatementData')
   },

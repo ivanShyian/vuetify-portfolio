@@ -1,9 +1,11 @@
 <template>
   <v-main>
-    <v-container>
+    <v-container class="full-height">
       <AppLoader v-if="loading"/>
       <router-view v-else/>
-      <TheComponentLocker/>
+      <TheComponentLocker
+        :locked-components="['contacts']"
+      />
     </v-container>
   </v-main>
 </template>

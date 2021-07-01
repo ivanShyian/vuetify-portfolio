@@ -38,26 +38,54 @@ export const en = {
   projects: {
     additional: 'Of course, these are not all of my projects. There were a couple of sites that I could show you but I think you are not interested in pure html and css. At this point in time, all forces are thrown into the development with Vue2, Vue3 and also NuxtJS. Anyway you can check my github for all repositories that i have: ',
     additionalLabel: 'Additional info',
+    usedTech: 'Used technologies',
     card: [{
-      img: ['fitbody/fitbody.png', 'fitbody/fitbody2.png', 'fitbody/fitbody3.png'],
-      smallDescription: 'Fitbody application that help people to gain, lose or keep weight and easily enabled to follow your diet',
-      text: 'This project was developed as a graduation project for the university. It is not completely ready at the moment, but from time to time I continue to write code. Nevertheless, looking at the fact that the application is not completely ready - at this stage there is an opportunity to interact with it.This application includes things like:',
-      title: 'FitBody'
+      smallDescription: 'Fitbody application that help people to gain, lose, keep weight and control daily ration',
+      text: 'This project was developed as a graduation project for the university. Fitbody was created with Vue 3 Optional API. Application store every user data in firebase database and has access to these data through REST API. All functional moments processed on Frontend side. Actually it\'s not a final version and part of functionality is disabled.. anyway you can try it by this link:',
+      title: 'FitBody',
+      technologies: ['Vue 3 Optional API', 'Firebase auth + database', 'yup + vee-validate (fields validating)', 'REST API']
     }, {
-      img: ['vuestore/VueStore.png', 'vuestore/VueStore3.png', 'vuestore/VueStore4.png'],
-      smallDescription: 'Store where you can commit that has most of functionality like any other online-store',
-      text: 'Vue-Store was developed oneself. Developing process was...',
-      title: 'Vue-Store'
+      smallDescription: 'Online store where you can buy everything',
+      text: 'Online store that was built as a graduation project for vue-course.This project designed very simply but the main goal was built store that functionality corresponds to any other store. This project has role-based layer that gives user with "admin" status additional capabilities, like adding new categories and products to store and track new client orders. There was used Composition API Hooks for build cart and auth logical parts. Follow this link to see the project:',
+      title: 'VueStore',
+      technologies: ['Vue 3 Composition API', 'Firebase database + auth', 'yup + vee-validate (fields validating)', 'cloudpayments', 'REST API']
     }, {
-      img: ['stardb/react-star-db.png'],
-      smallDescription: 'Web-dictionary of the Starwars universe',
-      text: 'Starwars API was added here to show my skills in REST API',
-      title: 'Starwars API'
-    }],
+      title: 'This portfolio',
+      smallDescription: 'I can\'t forget for my portfolio',
+      text: 'Project was built with Vue 2 + Vuetify and vue-internalization. English lang i store inside a project because that is fallback language.. Other two (ru, uk) i\'m fetching from Firebase and show to user after success load. Link: (You already here)',
+      technologies: ['Vue 2', 'Vuetify', 'vue-i18n (localization)', 'Firebase database']
+    }
+      // {
+      // img: ['stardb/react-star-db.png'],
+      // smallDescription: 'Web-dictionary of the Starwars universe',
+      // text: 'SocketChat',
+      // title: 'SocketChat',
+      // technologies: ['Vue 3 Composition API', 'Typescript', 'Firebase SDK + database', 'socket.io', 'expressJS']
+      // }
+    ],
     page: '<!--Projects-->'
   },
   experience: {
-    page: '<!--Experience-->'
+    page: '<!--Experience-->',
+    responsibilities: 'Responsibilities',
+    position: 'Position',
+    workingTime: 'Working time',
+    jobs: [
+      {
+        title: 'Inrating',
+        subtitle: 'Social Network & TV Channel',
+        position: 'Frontend-developer',
+        workingTime: '6 month',
+        content: `Inrating is multiplatform network. Web-frontend based on VueJS 2 and half of this project wrote with
+                  vue-class-component + vue-property-decorator + typescript (Components Class based approach).
+                  My area was mobile and desktop versions - there was two different projects with own conceptions. I have closely worked there with socket.io because of project has own TV Channel that works through websockets,
+                  also like chat and some notifications.
+                  Worked with api routes provides from backend, especially often i worked with backend of my team.
+                  New functionality i have writing only with typescript
+                  Additionally there was to many bugs reported in JIRA backlog that was fixed by me`,
+        responsibilities: ['Supporting code', 'Writing new functionality', 'UI Component building', 'Raising Performance', 'Refactoring', 'Fixing bugs']
+      }
+    ]
   },
   link: 'Link',
   phone: 'Phone',
@@ -71,7 +99,7 @@ export const en = {
   openButton: 'OPEN',
   resume: {
     age: '23 years-old',
-    content: 'Hello! My name is Ivan, I am 23 years old and I was born in Kiev. In February of this year, I graduated from university and received my bachelor\'s degree in Software Engineering. More than a year I have been intensively studying front-end development. The entire learning process proceeded independently through reading the documentation, analyzing examples of experienced developers and, of course, with the help of courses. Most of my knowledge I received in courses that raised my knowledge to a new level. I also continue to develop and work on my skills and myself in particular!',
+    content: 'Hello, my name is Ivan and I am 23 years old. My journey as developer began over a year ago. The beginning was made when I needed a reference site. Spurred on my own interest, I decided to start learning the HTML, CSS and also Javascript. At that time, I have already knew for sure that I would become a developer. After having mastered in Javascript, I started to learn ReactJS and write small projects, but my attention was sticky up to updated Vue 3, that was released with Typescript support and new representation that named “Composition API”. After reading the documentation, passing a couple of courses and several projects were written that allowed me to feel free in Vue environment. At the moment I am working as a Frontend developer on a project based on Vue 2, about this you can read more in the "Experience" tab. Every day I continue to work on my skills and on myself in particular.',
     name: 'Ivan Shyian',
     page: '<!--Resume-->',
     place: 'Kyiv, Ukraine',
@@ -109,7 +137,7 @@ export const en = {
       theoryTime: '20 hours'
     }, {
       author: 'Maximilian Schwarzmüller',
-      content: 'Full typescript course + React with TS',
+      content: 'Course of the actual codding-language to the current period. This course helped me to understand additional features that Typescript provides to developer and also this increased my skills in development',
       name: 'Understanding TypeScript - 2021 Edition',
       theoryTime: '15 hours'
     }],

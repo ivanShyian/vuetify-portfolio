@@ -1,7 +1,7 @@
 <template>
-  <v-sheet>
+  <v-sheet class="full-height">
     <app-page-title/>
-    <v-row justify="center">
+    <v-row justify="center" class="mt-md-10 d-flex align-center">
       <v-col cols="12" sm="6" md="4"
              v-for="item in social"
              :key="item.id"

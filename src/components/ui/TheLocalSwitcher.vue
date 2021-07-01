@@ -4,17 +4,17 @@
   >
     <template v-slot:activator="{ attrs, on }">
       <v-btn
-        elevation="1"
         color="transparent"
         class="mr-5"
         v-bind="attrs"
         v-on="on"
-        :rounded="!isDrawerView"
         small
+        :elevation="isDrawerView ? 0 : 1"
+        :rounded="!isDrawerView"
         :light="isDrawerView"
         :width="isDrawerView ? '100%' : 'auto'"
       >
-        {{ currentLocale }}
+        <span :style="isDrawerView ? 'border-bottom: 1px solid rgba(0, 0, 0, .2)' : ''">{{ currentLocale }}</span>
       </v-btn>
     </template>
 

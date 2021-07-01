@@ -2,6 +2,7 @@
   <div>
     <v-app-bar app
                dark
+               class="navigation-bar"
                color="#29B6F6">
       <v-toolbar-title class="font-weight-medium">Ivan Shyian
         <span class="text-overline text--disabled">Portfolio</span>
@@ -24,13 +25,21 @@
           <!--LOCAL SWITCHER-->
           <TheLocalSwitcher
           ></TheLocalSwitcher>
-          <router-link v-for="(link, i) in items"
-                       :to="$i18nRoute({ name: link.name })"
-                       v-slot="{ navigate }"
-                       :key="i"
-                       custom
+          <router-link
+            v-for="(link, i) in items"
+            :to="$i18nRoute({ name: link.name })"
+            v-slot="{ navigate }"
+            :key="i"
+            custom
           >
-            <v-btn text @click="navigate" height="100%">
+            <v-btn
+              text
+              @click="navigate"
+              height="100%"
+              :class="['navigation-button', {
+                activeClass: normalizedRoutePath === link.src
+              }]"
+            >
               <v-icon small left>{{ link.icon }}</v-icon>
               {{ navigationName(link.title) }}
             </v-btn>
@@ -127,7 +136,10 @@ export default {
   computed: {
     ...mapGetters({
       loading: 'loader/loading'
-    })
+    }),
+    normalizedRoutePath() {
+      return '/' + this.$route.path.split('/')[2]
+    }
   },
   methods: {
     navigationName(name) {
@@ -139,11 +151,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navigation-bar {
+  overflow: hidden;
+}
 .btn-skeleton-loader {
   ::v-deep .v-skeleton-loader__button {
     margin: 0 2px;
-    width: 150px;
+    width: 130px;
     height: 100%;
   }
+}
+.navigation-button.activeClass {
+  transform: scale(1.1);
+  color: aqua;
 }
 </style>

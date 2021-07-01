@@ -28,7 +28,7 @@
                 <template>
                   <v-text-field
                     class="pl-6 mr-4"
-                    label="Type here on English"
+                    :label="`Type here on ${exactLabel}`"
                     v-model="message"
                     :rules="rules"
                     :error-messages="errorMessage.length ? errorMessage : ''"
@@ -59,6 +59,12 @@
 <script>
 import ComponentLocker from '../../utils/componentLocker'
 export default {
+  props: {
+    lockedComponents: {
+      type: Array,
+      required: false
+    }
+  },
   data() {
     return {
       rules: [
@@ -72,6 +78,21 @@ export default {
   computed: {
     dialog() {
       return this.$store.getters['dialog/isShowedDialog']
+    },
+    component() {
+      const fullLocation = window.location.pathname.split('/')
+      const currentLocation = fullLocation[fullLocation.length - 1]
+      return currentLocation.toLowerCase()
+    },
+    exactLabel() {
+      switch (this.$i18n.locale) {
+        case 'ru':
+          return 'Russian'
+        case 'uk':
+          return 'Ukrainian'
+        default:
+          return 'English'
+      }
     }
   },
   methods: {
@@ -91,6 +112,9 @@ export default {
       }
     },
     handleClose() {
+      if (this.lockedComponents.includes(this.component)) {
+        this.$router.replace('/')
+      }
       this.$store.dispatch('dialog/changeProtectionDialogStatus', false)
     }
   }

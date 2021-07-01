@@ -12,6 +12,7 @@
     "browserify-fs": "^1.0.0",
     "core-js": "^3.6.5",
     "firebase": "^8.4.1",
+    "v-viewer": "^1.6.3",
     "vue": "^2.6.11",
     "vue-i18n": "^8.22.3",
     "vue-router": "^3.2.0",

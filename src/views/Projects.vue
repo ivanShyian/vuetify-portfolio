@@ -1,5 +1,6 @@
 <template>
   <v-sheet
+    class="full-height d-flex flex-column"
     color="white"
   >
     <app-page-title/>
@@ -11,8 +12,7 @@
       >
         <v-card
           v-if="projects.length"
-          min-height="350"
-          max-height="350"
+          height="370"
           elevation="2"
           outlined
           class="d-flex flex-column pt-2 relative-card"
@@ -20,7 +20,7 @@
           <v-img
             max-height="150"
             contain
-            :src="require(`@/assets/projects/${proj.img[0]}`)"
+            :src="proj.img[0]"
           ></v-img>
           <v-divider class="mt-3"></v-divider>
           <v-card-title class="text-subtitle-1 text-sm-h6 font-weight-regular"
@@ -42,7 +42,7 @@
           elevation="1"
           outlined
         >
-          <v-card-title class="justify-center">{{ $t('projects.additionalLabel') }}</v-card-title>
+          <v-card-title class="justify-center text-md-subtitle-1 font-weight-regular py-1 py-xl-2">{{ $t('projects.additionalLabel') }}</v-card-title>
           <v-divider></v-divider>
           <v-card-text
           >{{ $t('projects.additional') }}

@@ -1,13 +1,14 @@
 <template>
   <v-sheet
     color="white"
+    class="d-flex flex-column full-height"
   >
-    <app-page-title/>
+    <app-page-title class="mb-1"/>
     <v-row
       justify="center"
-      class="pt-6"
+      class="pt-2"
     >
-      <v-col cols="12" sm="10" md="9" lg="8">
+      <v-col cols="12" sm="10" md="9" lg="8" class="pt-0 mt-n9">
         <v-expansion-panels
           v-model="panel"
           :disabled="disabled"
@@ -17,7 +18,7 @@
             :key="i"
           >
             <v-expansion-panel-header
-              class="text-subtitle-2 text-md-button font-md-weight-bold"
+              class="text-subtitle-2 text-md-button font-md-weight-bold px-4 px-md-6"
             >{{ $t(`study.courseList[${c.id}].name`) }}</v-expansion-panel-header>
             <v-expansion-panel-content>
               <p class="text-body-2 text-md-body-1">{{ $t(`study.courseList[${c.id}].content`) }}</p>
