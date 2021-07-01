@@ -174,6 +174,11 @@ export default {
   li:not(:first-child) {
     flex: 0 0 45%;
     margin-left: 1rem;
+    @media (max-width: 800px) {
+      flex: 0 0 100%;
+      font-size: .8rem;
+      margin-left: .75rem;
+    }
   }
 }
 </style>
