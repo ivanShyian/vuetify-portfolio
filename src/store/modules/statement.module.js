@@ -19,7 +19,6 @@ export default {
       state.userContacts = [...payload]
     },
     setActualStack(state, payload) {
-      console.log(payload)
       state.userStack = payload
     },
     setActualStudy(state, payload) {
@@ -33,7 +32,6 @@ export default {
     },
     setActualJobs(state, payload) {
       state.userJobs = payload
-      console.log(state.userJobs)
     }
   },
   actions: {
@@ -47,7 +45,6 @@ export default {
         commit('setActualStudy', data.stydy) // :)))
         commit('setActualJobs', data.jobs)
         dispatch('loader/loadingStatusHandler', false, { root: true })
-        console.log({ data })
       } catch (e) {
         console.warn(e)
       }
