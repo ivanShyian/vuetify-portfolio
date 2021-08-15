@@ -17,7 +17,7 @@ export default {
   },
   created() {
     // To unlock contacts page
-    localStorage.setItem('lock', 'opened')
+    // localStorage.setItem('lock', 'opened')
   },
   mounted() {
     this.$store.dispatch('statement/loadStatementData')

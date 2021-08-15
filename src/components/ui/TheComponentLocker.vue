@@ -19,8 +19,7 @@
             <v-card-text>
               <div class="pa-6 pb-0">
                 <p class="text-body-1 ">There is locked unfortunately.. By the way if you know some magic keyword (that opens everything) from the world where pictures are talking - it's not a big deal for you to unlock this</p>
-                <p class="text-body-2 text--disabled">P.S. He has glasses..</p>
-                <p class="text-caption text--disabled">P.S.2 Auth-or added this for a bit of privacy.. just a bit</p>
+                <p class="text-caption text--disabled">P.S This was added for djinni.co especially</p>
               </div>
             </v-card-text>
             <v-card-actions class="justify-end">
@@ -28,7 +27,7 @@
                 <template>
                   <v-text-field
                     class="pl-6 mr-4"
-                    :label="`Type here on ${exactLabel}`"
+                    :label="`Type here on ${exactLabel} your response`"
                     v-model="message"
                     :rules="rules"
                     :error-messages="errorMessage.length ? errorMessage : ''"

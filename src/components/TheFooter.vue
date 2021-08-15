@@ -23,13 +23,12 @@
           v-else
         >
           <v-btn
+            @click.prevent="clickHandler(item)"
             v-for="item in social"
             :key="item.id"
             class="mx-4 my-0 white--text"
             icon
             link
-            target="_blank"
-            :href="item.link"
           >
             <v-icon size="18px">
               {{ item.icon }}
@@ -47,6 +46,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import componentLocker from '@/utils/componentLocker'
 
 export default {
   data() {
@@ -62,6 +62,16 @@ export default {
     }),
     social() {
       return this.$store.getters['statement/socialFooter']
+    }
+  },
+  methods: {
+    clickHandler(item) {
+      const lock = localStorage.getItem('lock')
+      if (lock === 'opened') {
+        window.open(item.link, '_blank')
+      } else {
+        componentLocker.checkLocker()
+      }
     }
   }
 }
