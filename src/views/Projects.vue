@@ -4,38 +4,11 @@
     color="white"
   >
     <app-page-title/>
-    <v-row>
-      <v-col v-for="(proj, i) in projects"
-             :key="proj.id"
-             class="pt-0"
-             cols="12" sm="6" md="4"
-      >
-        <v-card
-          v-if="projects.length"
-          height="370"
-          elevation="2"
-          outlined
-          class="d-flex flex-column pt-2 relative-card"
-        >
-          <v-img
-            max-height="150"
-            contain
-            :src="proj.img[0]"
-          ></v-img>
-          <v-divider class="mt-3"></v-divider>
-          <v-card-title class="text-subtitle-1 text-sm-h6 font-weight-regular"
-          >{{ $t(`projects.card[${i}].title`) }}</v-card-title>
-          <v-card-text>{{  $t(`projects.card[${i}].smallDescription`) }}</v-card-text>
-          <v-card-actions class="absolute-card-button">
-            <v-btn color="#29B6F6"
-                   dark
-                   :to="$i18nRoute({ name: 'Project', params: { link: proj.link } })"
-            >{{ $t(`openButton`) }}
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
+    <template v-if="projects.length">
+      <projects-swiper
+        :projects="projects"
+      />
+    </template>
     <v-row>
       <v-col>
         <v-card
@@ -62,18 +35,22 @@
 </template>
 
 <script>
-import AppPageTitle from '../components/ui/AppPageTitle'
+import AppPageTitle from '@/components/ui/AppPageTitle'
+import ProjectsSwiper from '@/components/projects/ProjectsSwiper'
 export default {
-  components: { AppPageTitle },
+  components: { ProjectsSwiper, AppPageTitle },
   computed: {
-    projects() {
+    initialProjects() {
       return this.$store.getters['statement/projects']
+    },
+    projects() {
+      return this.initialProjects && this.initialProjects.slice().reverse()
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .my-font {
   font-family: "JetBrains Mono Light", sans-serif !important;
 }

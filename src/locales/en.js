@@ -45,25 +45,25 @@ export const en = {
       title: 'FitBody',
       technologies: ['Vue 3 Optional API', 'Firebase auth + database', 'yup + vee-validate (fields validating)', 'REST API']
     }, {
-      smallDescription: 'Online store where you can buy everything',
+      smallDescription: 'Online store that includes all the features of functioning online stores',
       text: 'Online store that was built as a graduation project for vue-course.This project designed very simply but the main goal was built store that functionality corresponds to any other store. This project has role-based layer that gives user with "admin" status additional capabilities, like adding new categories and products to store and track new client orders. There was used Composition API Hooks for build cart and auth logical parts. Follow this link to see the project:',
       title: 'VueStore',
       technologies: ['Vue 3 Composition API', 'Firebase database + auth', 'yup + vee-validate (fields validating)', 'cloudpayments', 'REST API']
     }, {
       title: 'This portfolio',
-      smallDescription: 'I can\'t forget for my portfolio',
+      smallDescription: 'Can\'t forget to post my portfolio here :3',
       text: 'Project was built with Vue 2 + Vuetify and vue-internalization. English lang i store inside a project because that is fallback language.. Other two (ru, uk) i\'m fetching from Firebase and show to user after success load. Link: (You already here)',
       technologies: ['Vue 2', 'Vuetify', 'vue-i18n (localization)', 'Firebase database']
-    }
-      // {
-      // img: ['stardb/react-star-db.png'],
-      // smallDescription: 'Web-dictionary of the Starwars universe',
-      // text: 'SocketChat',
-      // title: 'SocketChat',
-      // technologies: ['Vue 3 Composition API', 'Typescript', 'Firebase SDK + database', 'socket.io', 'expressJS']
-      // }
-    ],
-    page: '<!--Projects-->'
+    },
+    {
+      img: ['stardb/react-star-db.png'],
+      smallDescription: 'There is chat built with WebSockets. Gives ability to chat with your friends. So, after telegram will die - you know what chat to choice',
+      text: 'This chat was built with WebSockets, especially with Socket.IO on server-side managed my Express JS. Front is Vue 3 Composition API with Typescript. Additionally, all api routes was defined in express application. So, this application works with own backend server',
+      title: 'SocketChat',
+      technologies: ['Vue 3 Composition API', 'Typescript', 'Firebase SDK + database', 'socket.io', 'expressJS']
+    }],
+    page: '<!--Projects-->',
+    swipe: 'swipe'
   },
   experience: {
     page: '<!--Experience-->',
@@ -75,7 +75,7 @@ export const en = {
         title: 'Inrating',
         subtitle: 'Social Network & TV Channel',
         position: 'Frontend-developer',
-        workingTime: '6 month',
+        workingTime: 'month',
         content: `Inrating is multiplatform network. Web-frontend based on VueJS 2 and half of this project wrote with
                   vue-class-component + vue-property-decorator + typescript (Components Class based approach).
                   My area was mobile and desktop versions - there was two different projects with own conceptions. I have closely worked there with socket.io because of project has own TV Channel that works through websockets,

@@ -14,7 +14,7 @@
           <v-card-subtitle class="exp-card-subtitle">
             <p>{{ $t(`experience.jobs[${idx}].subtitle`) }}</p>
             <p><span class="font-weight-bold">{{ $t('experience.position') }}:</span> {{ $t(`experience.jobs[${idx}].position`) }}</p>
-            <p><span class="font-weight-bold">{{ $t('experience.workingTime') }}:</span> {{ $t(`experience.jobs[${idx}].workingTime`) }}</p>
+            <p><span class="font-weight-bold">{{ $t('experience.workingTime') }}:</span> 8 {{ $t(`experience.jobs[${idx}].workingTime`) }}</p>
           </v-card-subtitle>
           <v-divider></v-divider>
           <v-card-text>

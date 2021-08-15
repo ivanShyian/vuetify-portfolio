@@ -19,7 +19,11 @@
                 class="pa-1 fa-border d-flex align-center"
               >
                 <div style="width: 100%">
-                  <img style="width: 100%;" :src="imageSource[0]" alt="">
+                  <img
+                    style="width: 100%; cursor: pointer;"
+                    :src="imageSource[0]"
+                    alt=""
+                  >
                 </div>
               </v-col>
               <v-col
@@ -31,9 +35,11 @@
                   class="two-images-block"
                   v-for="(img, id) in imageSource"
                   :key="id">
-                  <div v-if="id !== 0"
-                       style="width: 100%;">
-                    <img style="width: 100%" :src="img" alt="">
+                  <div
+                    v-if="id !== 0"
+                    style="width: 100%;"
+                  >
+                    <img style="width: 100%; cursor: pointer;" :src="img" alt="">
                   </div>
                 </div>
               </v-col>
@@ -45,7 +51,11 @@
               cols="12"
               class="py-5 px-4 d-flex align-center justify-center"
               v-viewer="viewerSettings">
-              <img class="rounded-sm" style="width: 95%;" :src="imageSource[0]" alt="">
+              <img
+                class="rounded-sm"
+                style="width: 95%; cursor: pointer"
+                :src="imageSource[0]" alt=""
+              >
             </v-col>
           </v-row>
         </template>
