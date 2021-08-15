@@ -1,9 +1,11 @@
 <template>
   <div>
-    <v-app-bar app
-               dark
-               class="navigation-bar"
-               color="#29B6F6">
+    <v-app-bar
+      app
+      dark
+      class="navigation-bar"
+      color="#29B6F6"
+    >
       <v-toolbar-title class="font-weight-medium">Ivan Shyian
         <span class="text-overline text--disabled">Portfolio</span>
       </v-toolbar-title>
@@ -21,7 +23,11 @@
             ></v-skeleton-loader>
           </v-col>
         </v-row>
-        <div v-else class="full-height d-flex align-center">
+        <div
+          v-else
+          :style="addMargin ? 'margin-right: -6px' : ''"
+          class="full-height d-flex align-center"
+        >
           <!--LOCAL SWITCHER-->
           <TheLocalSwitcher
           ></TheLocalSwitcher>
@@ -130,7 +136,19 @@ export default {
           src: '/contacts',
           icon: 'fa-id-card'
         }
-      ]
+      ],
+      addMargin: false
+    }
+  },
+  watch: {
+    $route: {
+      handler: async function (to, from) {
+        if (!from || to !== from) {
+          await this.$nextTick()
+          this.addMargin = document.documentElement.scrollHeight > document.documentElement.clientHeight
+        }
+      },
+      immediate: true
     }
   },
   computed: {

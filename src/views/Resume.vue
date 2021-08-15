@@ -8,7 +8,7 @@
                 outlined
                 height="97%"
         >
-          <v-container class="full-height d-flex flex-column">
+          <v-container class="pt-0 full-height d-flex flex-column">
             <v-row class="pb-2 pb-sm-4 my-xl-10 d-flex align-center">
               <v-col
                 :cols="breakpoint ? 6 : 12"
@@ -53,7 +53,7 @@
                 outlined
                 height="97%"
         >
-          <v-container class="full-height">
+          <v-container class="pt-0 full-height">
             <v-row class="pt-5 pb-2 pa-4 pa-xl-10">
               <v-col>
                 <p class="font-weight-bold mb-0 text-xl-h6">{{ $t('resume.stackLabel') }}</p>

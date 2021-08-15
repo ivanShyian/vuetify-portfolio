@@ -15,7 +15,9 @@
           elevation="1"
           outlined
         >
-          <v-card-title class="justify-center text-md-subtitle-1 font-weight-regular py-1 py-xl-2">{{ $t('projects.additionalLabel') }}</v-card-title>
+          <v-card-title
+            class="justify-center text-body-1 text-md-subtitle-1 font-weight-regular py-1 py-xl-2"
+          >{{ $t('projects.additionalLabel') }}</v-card-title>
           <v-divider></v-divider>
           <v-card-text
           >{{ $t('projects.additional') }}
