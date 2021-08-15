@@ -76,12 +76,11 @@ export const en = {
         subtitle: 'Social Network & TV Channel',
         position: 'Frontend-developer',
         workingTime: 'month',
-        content: `Inrating is multiplatform network. Web-frontend based on VueJS 2 and half of this project wrote with
+        content: `Inrating is multiplatform social network. Web-frontend based on VueJS 2 and half of this project wrote with
                   vue-class-component + vue-property-decorator + typescript (Components Class based approach).
-                  My area was mobile and desktop versions - there was two different projects with own conceptions. I have closely worked there with socket.io because of project has own TV Channel that works through websockets,
-                  also like chat and some notifications.
-                  Worked with api routes provides from backend, especially often i worked with backend of my team.
-                  New functionality i have writing only with typescript
+                  My area was mobile and desktop versions - there was two different projects with own conceptions. I have closely worked there with socket.io that provides features to use with chat and some notifications and other project events.
+                  Also project has own TV Channel that works through hls.js.
+                  Worked with api routes provides from backend, especially often i worked with backend devs of my team.
                   Additionally there was to many bugs reported in JIRA backlog that was fixed by me`,
         responsibilities: ['Supporting code', 'Writing new functionality', 'UI Component building', 'Raising Performance', 'Refactoring', 'Fixing bugs']
       }
