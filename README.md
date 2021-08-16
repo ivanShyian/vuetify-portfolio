@@ -1,5 +1,3 @@
-# vue-shyian-portfolio
-Link: https://vuetify-portfolio.web.app/
+#My Portfolio
 
-Bugs to fix:
-1. Prevent arrow keypressing when locker-modal is appeared
+Link: https://vuetify-portfolio.web.app/

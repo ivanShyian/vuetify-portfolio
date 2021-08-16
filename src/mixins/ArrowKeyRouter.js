@@ -18,6 +18,12 @@ export const ArrowListenerMixin = {
       })
     },
     routeToPage({ key, pages, currentPageIndex, lengthOfPages }) {
+      const isLockerAppears = this.$store.getters['dialog/isShowedDialog']
+
+      if (isLockerAppears) {
+        return
+      }
+
       if (key === 'left') {
         if (currentPageIndex === 0) return
 
